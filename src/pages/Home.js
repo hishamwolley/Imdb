@@ -4,7 +4,7 @@ import styles from "../Styles/Home.module.scss";
 import CarouselContainer from "../components/CarouselContainer";
 import { getTopRated } from "../redux/features/movieDB/topRatedSlice";
 import { getPopular } from "../redux/features/movieDB/popularSlice";
-import { getTrailerOfDay } from "../redux/features/movieDB/trailerOfDaySlice";
+import { getMovieTvDetails } from "../redux/features/movieDB/movieTvDetailsSlice";
 import TopRatedMovieTvPost from "../components/TopRatedMovieTvPost";
 import Banner from "../components/Banner";
 
@@ -30,10 +30,9 @@ const Home = ({ type }) => {
 
 	const { topRated, loadingTopRated } = useSelector((state) => state.topRated);
 
-	const { trailerOfDay, loadingTrailerOfDay } = useSelector(
-		(state) => state.trailerOfDay
+	const { movieTvDetails, loadingMovieTvDetails } = useSelector(
+		(state) => state.movieTvDetails
 	);
-
 	const observer = useRef();
 	const gridPostRef = useCallback(
 		(node) => {
@@ -50,20 +49,20 @@ const Home = ({ type }) => {
 	);
 
 	useEffect(() => {
-		dispatch(getTrailerOfDay(type));
+		dispatch(getMovieTvDetails({ type: type, static: true }));
 		dispatch(getPopular(type));
 		dispatch(getTopRated({ type, page }));
 	}, [dispatch, type, page]);
 
 	return (
 		<div className={styles.moviesHome}>
-			{!loadingTrailerOfDay ? (
+			{!loadingMovieTvDetails ? (
 				<Banner
-					movieTv={trailerOfDay}
+					movieTv={movieTvDetails}
 					type={type}
 					videoKey={
-						trailerOfDay.results[0].key
-							? trailerOfDay.results[trailerOfDay.results.length - 1].key
+						movieTvDetails.results[0].key
+							? movieTvDetails.results[movieTvDetails.results.length - 1].key
 							: null
 					}
 					isHome={true}

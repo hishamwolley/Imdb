@@ -58,7 +58,7 @@ const displayChart = (svgRef, width, height, margin, data, isVC) => {
 				return d.title;
 			})
 		)
-		.padding(0.7);
+		.padding(0.6);
 
 	svg
 		.append("g")
@@ -153,11 +153,19 @@ const displayChart = (svgRef, width, height, margin, data, isVC) => {
 
 	svg
 		.selectAll("rect")
-		.on("mouseenter", (e, d) => {
+		.on("mouseenter", function () {
 			tooldiv.style("visibility", "visible");
+
+			d3.select(this)
+				.transition()
+				.duration(300)
+				.attr("opacity", 0.6)
+				.attr("x", (d) => xScale(d.title) - 5)
+				.attr("width", xScale.bandwidth() + 10);
 		})
 		.on("mousemove", (e, d) => {
 			tooldiv
+				.style("visibility", "visible")
 				.style("position", "absolute")
 				.style("background", "white")
 				.style("z-index", "5")
@@ -175,6 +183,12 @@ const displayChart = (svgRef, width, height, margin, data, isVC) => {
 			tooldiv.style("left", e.pageX + "px").style("top", e.pageY - 80 + "px");
 		})
 		.on("mouseleave", function (e, d) {
+			d3.select(this)
+				.transition()
+				.duration(300)
+				.attr("opacity", 1)
+				.attr("x", (d) => xScale(d.title))
+				.attr("width", xScale.bandwidth());
 			tooldiv.style("visibility", "hidden");
 		});
 };

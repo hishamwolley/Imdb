@@ -13,7 +13,6 @@ import { useNavigate, useLocation, NavLink, Link } from "react-router-dom";
 import throttle from "lodash.throttle";
 import { getSearchResult } from "../redux/features/movieDB/searchResultSlice";
 import SearchResultContainer from "./SearchResultContainer";
-import debounce from "lodash.debounce";
 
 const Header = () => {
 	const searchBar = useSelector((state) => state.navigation.searchBar);

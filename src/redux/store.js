@@ -3,7 +3,6 @@ import thunk from "redux-thunk";
 import navigationSlices from "./features/navigation/navigationSlices";
 import { topRatedSlice } from "./features/movieDB/topRatedSlice";
 import { popularSlice } from "./features/movieDB/popularSlice";
-import { trailerOfDaySlice } from "./features/movieDB/trailerOfDaySlice";
 import { movieTvDetailsSlice } from "./features/movieDB/movieTvDetailsSlice";
 import { creditsSlice } from "./features/movieDB/creditsSlice";
 import { similarSlice } from "./features/movieDB/similarSlice";
@@ -14,7 +13,6 @@ export default configureStore(
 			navigation: navigationSlices,
 			topRated: topRatedSlice,
 			popular: popularSlice,
-			trailerOfDay: trailerOfDaySlice,
 			movieTvDetails: movieTvDetailsSlice,
 			credits: creditsSlice,
 			similar: similarSlice,

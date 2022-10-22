@@ -31,6 +31,7 @@ const CarouselContainer = ({ data, type }) => {
 	return (
 		<Carousel
 			customButtonGroup={<ButtonGroup />}
+			autoPlay={true}
 			arrows={false}
 			draggable={false}
 			responsive={responsive}
