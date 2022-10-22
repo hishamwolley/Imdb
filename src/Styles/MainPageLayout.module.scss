@@ -1,0 +1,21 @@
+@import "./variables.scss";
+
+.mainContainer{
+  width: 100%;
+  height: 100vh;
+  padding-left: 0;
+  padding-top: $headerHeight;
+
+
+  &__pushRight {
+    
+    @include breakpoint(md) {
+    transition: all 250ms;
+    padding-left: $sidebarWidth;
+    }
+    @include breakpoint(lg) {
+      transition: none;
+    }
+  }  
+}
+

@@ -1,0 +1,156 @@
+@import "./variables.scss";
+
+
+.banner{
+  color: $white;
+  &__emptyContainer {
+    width: 100%;
+    height: 100vh;
+    }
+}
+
+.details{
+  color: $white;
+  padding-left: 4rem;
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(md){
+    flex-direction: row;
+  }
+
+
+  &__flexContainer1{
+    width: 50%;
+  }
+
+  &__flexContainer2 {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+
+    @include breakpoint(md){
+      justify-content: center;
+    }
+
+    &__rateContainer{
+      p:first-child{
+        font-size: medium;
+      }
+      p{font-size: small};
+    }
+  }
+
+
+  &__runtimeReleaseContainers{
+      display: flex;
+      align-items: center;
+    p{
+      margin-right: .25rem;
+      font-size: small;
+    }
+  }
+
+  &__languageContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+
+    p:first-child{
+      font-weight: bold;
+      margin-right: .5rem;
+    }
+
+    p:last-child{
+      font-weight: normal;
+    }
+  }
+
+  &__directorContainer {
+    align-items: center;
+    margin-top: 1rem;
+    
+    
+    p:first-child{
+      font-weight: bold;
+      font-size: medium;
+    }
+
+    div{
+      display: flex;
+      align-items: center;
+      // justify-content: space-evenly;
+      flex-wrap: wrap;
+      p:first-child{
+        font-weight: normal;
+        font-size: small;
+      }
+      p{
+        font-size: small;
+        font-weight: normal;
+        margin-right: .75rem;
+      }
+    }
+  }
+
+  &__creditsContainer{
+    margin-top: 1rem;
+    p:first-child {
+      font-weight: bold;
+    }
+    button{
+      margin-left: .5rem;
+      font-size: small;
+      font-weight: normal;
+      color: cornflowerblue;
+
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+
+    div{
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      font-size: small;
+      margin-top: .25rem;
+      flex-wrap: wrap;
+      p:first-child{
+        font-weight: normal;
+      }
+      p{
+        margin-right: .75rem;
+      }
+    }
+  }  
+
+  &__genresContainer {
+    p:first-child {
+        font-weight: bold;
+        margin-top: .5rem;
+      }
+    div{
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: .5rem;
+
+      span{
+        margin:1rem 0.75rem 0 0;
+        padding: 0.25rem 1rem;
+        border-radius: 1rem;
+        font-size: small;
+        user-select: none;
+        border: 1px solid $lineOutlineColor;
+      }
+    }
+  }
+}
+
+.similar {
+  padding-left: 4rem;
+  color: $lineOutlineColor;
+  margin:2rem 0;
+  text-decoration: underline;
+}

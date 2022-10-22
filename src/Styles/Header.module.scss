@@ -1,0 +1,117 @@
+@import "./variables.scss";
+
+.header{
+  position: fixed;
+  top: 0;
+  justify-content: space-between;
+  width: 100%;
+  height:$headerHeight;
+  display:flex;
+  align-items: center;
+  background: $gray;
+  z-index: 10;
+  padding: 0 1rem;
+  transition: all 200ms;
+  @include breakpoint(md) {
+    padding-left: $sidebarWidth;
+  }
+
+
+  &__leftContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    color: $white;
+    width: 40%;
+    justify-content: flex-start;
+
+    form{
+      position: relative;
+    }
+    @include breakpoint(md){
+      width: 60%;
+    // justify-content: space-between;
+    }
+    @include breakpoint(lg) {
+      width: 60%;
+      justify-content: space-between;
+    }
+
+    &__menu{
+      cursor: pointer;
+      @include breakpoint(md) {
+        display: none;
+        
+      }
+    }
+
+    &__logo{
+      cursor: pointer;
+      margin-left: 1rem;
+      user-select: none;
+      font-weight: bold;
+      background-color: $lineOutlineColor ;
+      padding: .375rem;
+      border-radius: .25rem;
+
+     @include breakpoint(md) {
+      margin-left: 0;
+      margin-right: 1rem;
+      }
+    }
+
+    &__mdSearchInput{
+      display: none;
+
+    @include breakpoint(md) {
+        width: 13rem;
+        display: block;
+        margin-left: 1.25rem;
+        padding:0.75rem 0.5rem;
+        border-radius: 0.25rem;
+        border: none;
+        outline: none;
+        margin: 0 auto;
+        color: $gray;
+      }
+      @include breakpoint(lg) {
+        width: 20rem;
+      }
+      @include breakpoint(xl) {
+        width: 25rem;
+      }
+    }
+
+
+  }
+
+  &__rightContainer{
+    // width: 35%;
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: $white;
+    padding-right: 0.25rem;
+
+    @include breakpoint(md) {
+      width: 15rem;
+    }
+
+
+    &__searchLogo{
+      cursor: pointer;
+      @include breakpoint(md) {
+        display: none;
+      }
+    }
+    
+
+
+  } 
+  &__isActive {
+    color: $lineOutlineColor;
+    text-decoration: underline;
+  }
+                            
+}

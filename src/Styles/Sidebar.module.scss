@@ -1,0 +1,105 @@
+@import "./variables.scss";
+
+.sidebar{
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  height: 100vh;
+  width:200px;
+  background: $gray;
+  transform: translateX(-100%);
+  transition: all 200ms;
+  @include breakpoint(md) {
+    width: $sidebarWidth;
+    transition: all 250ms;
+    transform: translateX(0);
+  }
+  @include breakpoint(lg) {
+    transition:none;
+  }
+
+
+  &__chartLink{
+    display: none;
+    @include breakpoint(md){
+      display: block;
+    }
+  }
+
+
+  &__logo{
+    color:$white;
+    border:1px solid $lineOutlineColor;
+    padding: 0 .25rem;
+    @include breakpoint(md) {
+      display:none
+    }
+  }
+  &__sidebarOff {
+      transform: translateX(-100%);
+  }
+
+  &__sidebarOn {
+    transform: translateX(0);
+
+    &__topSection{
+      height: 3.75rem;
+      padding: 1rem 1rem .75rem 1rem ;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: .5px solid $lineOutlineColor ;;
+
+      &__close{
+        cursor: pointer;
+        @include breakpoint(md) {
+          display: none;
+        }
+      }
+    }
+  }
+
+
+
+  &__genresContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3{
+      margin-top: 2.5rem;
+      color: $white;
+      text-decoration: underline;
+      font-weight: lighter;
+    }
+  }
+
+  ul{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+
+    li{
+      width: 100%;
+      color: $white;
+      text-align: center;
+      // padding: 1rem 0;
+      background: inherit;
+      &:hover{
+        color: $gray;
+        background: white;
+      }
+
+      a{
+        width: 100%;
+        display: block;
+        padding: 1rem 0;
+        // font-size: ;
+      }
+    }
+  }
+  
+
+}
