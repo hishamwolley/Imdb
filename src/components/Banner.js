@@ -23,7 +23,10 @@ const Banner = ({ movieTv, type, videoKey, isHome }) => {
 					<div className={styles.moviesHome__trailerOfTheDay__details__link}>
 						<Link to={`${movieTv.id}`}>
 							<h2>{movieTv.tagline}</h2>
-							<p>{movieTv.overview}</p>
+							<p>
+								{movieTv.overview.length > 50 &&
+									`${movieTv.overview.substring(0, 200)} ...`}
+							</p>
 						</Link>
 					</div>
 				) : (

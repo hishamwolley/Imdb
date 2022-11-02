@@ -9,10 +9,14 @@ const initialState = {
 export const getTopRated = createAsyncThunk(
 	"topRated/getTopRated",
 	async (details, thunkAPI) => {
-		const res = await fetch(
-			`https://api.themoviedb.org/3/${details.type}/top_rated?api_key=${API_KEY}&language=en-US&page=${details.page}`
-		).then((data) => data.json());
-		return res;
+		try {
+			const res = await fetch(
+				`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${details.page}`
+			).then((data) => data.json());
+			return res;
+		} catch (e) {
+			console.log(e);
+		}
 	}
 );
 

@@ -9,35 +9,18 @@ const initialState = {
 export const getMovieTvDetails = createAsyncThunk(
 	"movieTvDetails/getMovieTvDetails",
 	async (details, thunkAPI) => {
-		if (details.static) {
-			let id;
-			if (details.type === "movie") {
-				id = "436270";
-			} else if (details.type === "tv") {
-				id = "84773";
-			}
-
+		try {
 			const res = await fetch(
-				`https://api.themoviedb.org/3/${details.type}/${id}?api_key=${API_KEY}&language=en-US`
+				`https://api.themoviedb.org/3/${details.type}/${details.id}?api_key=${API_KEY}&language=en-US`
 			).then((data) => data.json());
+
 			const trailerDetails = await fetch(
-				`https://api.themoviedb.org/3/${details.type}/${id}/videos?api_key=${API_KEY}&language=en-US`
+				`https://api.themoviedb.org/3/${details.type}/${details.id}/videos?api_key=${API_KEY}&language=en-US`
 			).then((data) => data.json());
-
-			console.log({ ...trailerDetails, ...res });
-
 			return { ...trailerDetails, ...res };
+		} catch (e) {
+			console.log(e);
 		}
-
-		const res = await fetch(
-			`https://api.themoviedb.org/3/${details.type}/${details.id}?api_key=${API_KEY}&language=en-US`
-		).then((data) => data.json());
-		console.log({ ...res });
-
-		const trailerDetails = await fetch(
-			`https://api.themoviedb.org/3/${details.type}/${details.id}/videos?api_key=${API_KEY}&language=en-US`
-		).then((data) => data.json());
-		return { ...trailerDetails, ...res };
 	}
 );
 const movieTvDetails = createSlice({

@@ -153,8 +153,14 @@ const displayChart = (svgRef, width, height, margin, data, isVC) => {
 
 	svg
 		.selectAll("rect")
-		.on("mouseenter", (e, d) => {
+		.on("mouseenter", function (e, d) {
 			tooldiv.style("visibility", "visible");
+			d3.select(this)
+				.transition()
+				.duration(300)
+				.attr("opacity", 0.6)
+				.attr("x", (d) => xScale(d.title) - 2.5)
+				.attr("width", xScale.bandwidth() + 5);
 		})
 		.on("mousemove", (e, d) => {
 			tooldiv
@@ -176,5 +182,11 @@ const displayChart = (svgRef, width, height, margin, data, isVC) => {
 		})
 		.on("mouseleave", function (e, d) {
 			tooldiv.style("visibility", "hidden");
+			d3.select(this)
+				.transition()
+				.duration(300)
+				.attr("opacity", 1)
+				.attr("x", (d) => xScale(d.title))
+				.attr("width", xScale.bandwidth());
 		});
 };

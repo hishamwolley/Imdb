@@ -9,11 +9,15 @@ const initialState = {
 export const getSimilar = createAsyncThunk(
 	"similar/getSimilar",
 	async (details, thunkAPI) => {
-		const res = await fetch(
-			`https://api.themoviedb.org/3/${details.type}/${details.id}/similar?api_key=${API_KEY}&language=en-US`
-		).then((data) => data.json());
+		try {
+			const res = await fetch(
+				`https://api.themoviedb.org/3/${details.type}/${details.id}/similar?api_key=${API_KEY}&language=en-US`
+			).then((data) => data.json());
 
-		return { ...res };
+			return { ...res };
+		} catch (e) {
+			console.log(e);
+		}
 	}
 );
 const similar = createSlice({

@@ -8,11 +8,14 @@ const initialState = {
 
 export const getPopular = createAsyncThunk(
 	"popular/getPopular",
+
 	async (type, thunkAPI) => {
-		const res = await fetch(
-			`https://api.themoviedb.org/3/${type}/popular?api_key=${API_KEY}&language=en-US&page=1`
-		).then((data) => data.json());
-		return res;
+		try {
+			const res = await fetch(
+				`https://api.themoviedb.org/3/${type}/popular?api_key=${API_KEY}&language=en-US&page=1`
+			).then((data) => data.json());
+			return res;
+		} catch (e) {}
 	}
 );
 const popular = createSlice({

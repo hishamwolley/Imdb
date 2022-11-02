@@ -9,15 +9,18 @@ const initialState = {
 export const getSearchResult = createAsyncThunk(
 	"searchResult/getSearchResult",
 	async (details, thunkAPI) => {
-		// console.log(details);
 		if (details === "") {
 			return;
 		}
-		const res = await fetch(
-			`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${details}`
-		).then((data) => data.json());
+		try {
+			const res = await fetch(
+				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${details}`
+			).then((data) => data.json());
 
-		return [...res.results];
+			return [...res.results];
+		} catch (e) {
+			console.log(e);
+		}
 	}
 );
 const searchResult = createSlice({
