@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import "./Styles/Body.scss";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import Charts from "./pages/Charts";
-import Layout from "./components/layout/Layout";
-import MainPageLayout from "./components/layout/MainPageLayout";
-import MovieTvDetails from "./pages/MovieTvDetails";
-import Wrapper from "./components/Wrapper";
+import Layout from "./globalComponents/layout/Layout";
+import MainPageLayout from "./globalComponents/layout/MainPageLayout";
+import MovieTvDetails from "./pages/movieTvDetails/MovieTvDetails";
+import Wrapper from "./globalComponents/Wrapper";
 function App() {
 	return (
 		<Wrapper>

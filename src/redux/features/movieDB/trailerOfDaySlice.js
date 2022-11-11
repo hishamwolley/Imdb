@@ -14,7 +14,7 @@ export const getTrailerOfDay = createAsyncThunk(
 		if (details.type === "movie") {
 			id = "436270";
 		} else if (details.type === "tv") {
-			id = "84773";
+			id = "1402";
 		}
 
 		try {
