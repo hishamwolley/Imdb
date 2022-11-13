@@ -3,8 +3,11 @@ import styles from "../../../Styles/MovieTvDeatils.module.scss";
 import { checkData } from "../../../helpers/apiCalls";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import Rating from "react-rating";
+import { ratingNotificationOn } from "../../../redux/features/navigation/navigationSlices";
+import { useDispatch } from "react-redux";
 
 const RatingContainer = ({ movieTvDetails, type, id }) => {
+	const dispatch = useDispatch();
 	return (
 		<section className={styles.details__flexContainer2}>
 			<div className={styles.details__flexContainer2__rateContainer}>
@@ -14,6 +17,7 @@ const RatingContainer = ({ movieTvDetails, type, id }) => {
 				<Rating
 					onClick={(value) => {
 						checkData(value, type, id);
+						dispatch(ratingNotificationOn());
 					}}
 					stop={10}
 					fractions={2}

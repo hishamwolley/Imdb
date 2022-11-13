@@ -7,8 +7,15 @@ export const navigationSlices = createSlice({
 		sidebar: false,
 		modal: false,
 		searchResultCont: false,
+		ratingNotification: false,
 	},
 	reducers: {
+		ratingNotificationOn: (state) => {
+			state.ratingNotification = true;
+		},
+		ratingNotificationOff: (state) => {
+			state.ratingNotification = false;
+		},
 		searchBarOn: (state) => {
 			state.searchBar = true;
 		},
@@ -49,6 +56,8 @@ export const {
 	toggleModal,
 	searchResultOff,
 	searchResultOn,
+	ratingNotificationOn,
+	ratingNotificationOff,
 } = navigationSlices.actions;
 
 export default navigationSlices.reducer;
